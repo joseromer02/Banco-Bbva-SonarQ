@@ -1,0 +1,83 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 731731154070-kfcc7g8gahp9fo07r09qcn6fpdom90gu.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile, email
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+  profiles:
+    actives: development
+  application:
+    name: BBVA
+  freemarker:
+    enabled: false
+  jpa:
+    properties:
+      hibernate:
+        formatSql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddlAuto: update
+      naming:
+        implicitStrategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://ep-white-shape-a5bmxfmp.us-east-2.aws.neon.tech/neondb
+    username: neondb_owner
+    password: m7zFXw9PtAQR
+    testOnBorrow: true
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 3
+    max-idle: 1
+    max-wait: 8000
+    driverClassName: org.postgresql.Driver
+  main:
+    allow-bean-definition-overriding: true
+
+
+server:
+  error:
+    include-message: always
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    operations-sorter: method
+    path: /swagger-ui
+  api-docs:
+    path: /api-docs
+
+logging:
+  file:
+    name: logs/app.log
+  level:
+    org.springframework.web: DEBUG
+    org.springdoc: DEBUG
+    io.swagger: DEBUG
+    root: INFO
+
+
+api:
+  external:
+    auth:
+        username: bbua
+        password: 123456
+
+
+laredo:
+  token: xd
